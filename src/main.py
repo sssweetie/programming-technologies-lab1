@@ -5,6 +5,7 @@ import sys
 from CalcRating import CalcRating
 from TextDataReader import TextDataReader
 
+
 def get_path_from_arguments(args) -> str:
     parser = argparse.ArgumentParser(description="Path to datafile")
     parser.add_argument("-p", dest="path", type=str, required=True,
@@ -20,6 +21,7 @@ def main():
     print("Students: ", students)
     rating = CalcRating(students).calc()
     print("Rating: ", rating)
+
 
 if __name__ == "__main__":
     main()
