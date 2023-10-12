@@ -10,7 +10,6 @@ class JsonDataReader(DataReader):
             data = json.load(file)
 
         students: DataType = {}
-
         for name, subjects in data.items():
             student_scores = []
             for subject, score in subjects.items():
