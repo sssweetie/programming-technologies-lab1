@@ -7,7 +7,7 @@ from src.Types import DataType
 class TestJsonDataReader:
     @pytest.fixture()
     def file_and_data_content(self) -> tuple[dict, DataType]:
-        text = {
+        text = '''{
             "Иванов Иван Иванович": {
                 "математика": 67,
                 "литература": 100,
@@ -18,7 +18,7 @@ class TestJsonDataReader:
                 "химия": 87,
                 "социология": 61
             }
-        }
+        }'''
         data = {
             "Иванов Иван Иванович": [
                 ("математика", 67),
@@ -38,8 +38,7 @@ class TestJsonDataReader:
                           file_and_data_content: tuple[dict, DataType],
                           tmpdir) -> tuple[str, DataType]:
         p = tmpdir.mkdir("datadir").join("my_data.json")
-        p.write_text(json.dumps(file_and_data_content[0],
-                     ensure_ascii=False),
+        p.write_text(file_and_data_content[0],
                      encoding='utf-8')
         return p, file_and_data_content[1]
 
