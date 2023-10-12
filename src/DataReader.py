@@ -8,8 +8,9 @@ class DataReader(ABC):
     def read(self, path: str) -> DataType:
         pass
 
+
 class NewDataReader(DataReader):
     def read(self, path: str) -> DataType:
         with open(path, 'r') as file:
             data = json.load(file)
-            return data  
+            return data
