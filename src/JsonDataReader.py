@@ -15,5 +15,4 @@ class JsonDataReader(DataReader):
             for subject, score in subjects.items():
                 student_scores.append((subject, score))
             students[name] = student_scores
-        print(type(students))
         return students

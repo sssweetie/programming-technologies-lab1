@@ -6,10 +6,8 @@ import sys
 import pytest
 import json
 from Types import DataType
-
-
+from StudentManager import StudentManager
 from JsonDataReader import JsonDataReader
-from CalcRating import CalcRating
 
 
 def get_path_from_arguments(args) -> str:
@@ -23,12 +21,11 @@ def get_path_from_arguments(args) -> str:
 def main():
     path = get_path_from_arguments(sys.argv[1:])
     reader = JsonDataReader()
-    reader.read(path)
     students = reader.read(path)
-    print("Students: ", students)
-    rating = CalcRating(students).calc()
-    print("Rating: ", rating)
-
+    min_score = 90
+    min_subjects = 2
+    student_manager = StudentManager(students)
+    student_manager.find_and_print_qualified_student(min_score, min_subjects)
 
 if __name__ == "__main__":
     main()
