@@ -27,8 +27,10 @@ def main():
     student_manager = StudentManager(students)
     student_manager.find_and_print_qualified_student(min_score, min_subjects)
 
+
 if __name__ == "__main__":
     main()
+
 
 class TestJsonDataReader:
     @pytest.fixture()
