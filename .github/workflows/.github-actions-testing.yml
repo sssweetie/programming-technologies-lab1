@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - feat/newDataReader
 
 jobs:
   build:
