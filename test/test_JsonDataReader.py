@@ -38,7 +38,7 @@ class TestJsonDataReader:
                           file_and_data_content: tuple[str, DataType],
                           tmpdir) -> tuple[str, DataType]:
         p = tmpdir.mkdir("datadir").join("my_data.json")
-        p.write_text(json.dump(file_and_data_content,
+        p.write_text(json.dumps(file_and_data_content,
                      ensure_ascii=False),
                      encoding='utf-8')
         return str(p), file_and_data_content
