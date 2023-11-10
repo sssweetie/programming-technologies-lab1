@@ -21,7 +21,7 @@ def get_path_from_arguments(args) -> str:
 
 
 def get_current_reader(path: str) -> DataReader:
-    root, file_extension = os.path.splitext(path)  
+    root, file_extension = os.path.splitext(path)
     match file_extension:
         case ".txt":
             return TextDataReader()
