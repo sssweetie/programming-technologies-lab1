@@ -11,12 +11,14 @@ from JsonDataReader import JsonDataReader
 from TextDataReader import TextDataReader
 from CalcRating import CalcRating
 
+
 def get_path_from_arguments(args) -> str:
     parser = argparse.ArgumentParser(description="Path to datafile")
     parser.add_argument("-p", dest="path", type=str, required=True,
                         help="Path to datafile")
     args = parser.parse_args(args)
     return args.path
+
 
 def get_current_reader(path: str) -> DataReader:
     root, file_extension = os.path.splitext(path)  
@@ -27,6 +29,7 @@ def get_current_reader(path: str) -> DataReader:
             return JsonDataReader()
         case _:
             raise ValueError("Неподдерживаемый формат")
+
 
 def main():
     print(sys.argv[1:])
