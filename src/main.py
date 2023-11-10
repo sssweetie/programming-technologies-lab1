@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 import argparse
 import sys
-
-
+import os
 import pytest
 import json
 from Types import DataType
 from StudentManager import StudentManager
+from DataReader import DataReader
 from JsonDataReader import JsonDataReader
-
+from TextDataReader import TextDataReader
+from CalcRating import CalcRating
 
 def get_path_from_arguments(args) -> str:
     parser = argparse.ArgumentParser(description="Path to datafile")
@@ -17,15 +18,28 @@ def get_path_from_arguments(args) -> str:
     args = parser.parse_args(args)
     return args.path
 
+def get_current_reader(path: str) -> DataReader:
+    root, file_extension = os.path.splitext(path)  
+    match file_extension:
+        case ".txt":
+            return TextDataReader()
+        case ".json":
+            return JsonDataReader()
+        case _:
+            raise ValueError("Неподдерживаемый формат")
 
 def main():
+    print(sys.argv[1:])
+
     path = get_path_from_arguments(sys.argv[1:])
-    reader = JsonDataReader()
+    reader = get_current_reader(path)
     students = reader.read(path)
+    rating = CalcRating(students).calc()
     min_score = 90
     min_subjects = 2
     student_manager = StudentManager(students)
     student_manager.find_and_print_qualified_student(min_score, min_subjects)
+    print("Rating: ", rating)
 
 
 if __name__ == "__main__":

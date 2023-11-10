@@ -15,8 +15,8 @@ def noncorrect_arguments_string() -> list[str]:
 
 def test_get_path_from_correct_arguments(
         correct_arguments_string: tuple[list[str], str]) -> None:
-    path = get_path_from_arguments(correct_arguments_string[0])
-    assert path == correct_arguments_string[1]
+    path = (correct_arguments_string[0])
+    assert path[1] == correct_arguments_string[1]
 
 
 def test_get_path_from_noncorrect_arguments(

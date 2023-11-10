@@ -8,7 +8,6 @@ class JsonDataReader(DataReader):
     def read(self, path: str) -> DataType:
         with open(path, encoding='utf-8') as file:
             data = json.load(file)
-            # newData = json.loads(data)
         students: DataType = {}
         for name, subjects in data.items():
             student_scores = []
