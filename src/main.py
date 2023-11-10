@@ -32,8 +32,6 @@ def get_current_reader(path: str) -> DataReader:
 
 
 def main():
-    print(sys.argv[1:])
-
     path = get_path_from_arguments(sys.argv[1:])
     reader = get_current_reader(path)
     students = reader.read(path)
